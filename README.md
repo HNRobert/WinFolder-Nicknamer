@@ -8,7 +8,7 @@ English & Chinese Supported
 
 It's QUITE useful when you want to give a folder a name with spaces or special characters, but the files inside or itself can't be referred when these characters are included in their path while using another program.
 
-**Restoring option is provided, so don't be worry because the previous data are saved the first time you change every folder's nickname.**
+**Restoring option is provided, so don't be worry because the previous data will be saved the first time you change every folder's nickname.**
 
 ## Example:
 
