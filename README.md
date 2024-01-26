@@ -8,9 +8,13 @@ English & Chinese Supported
 
 It's QUITE useful when you want to give a folder a name with spaces or special characters, but the files inside or itself can't be referred when these characters are included in their path while using another program.
 
-## Demo:
+**Restoring option is provided, so don't be worry because the previous data are saved the first time you change every folder's nickname.**
+
+## Example:
 
 <img width="924" alt="Screenshot 2024-01-26 165033" src="https://github.com/HNRobert/WinFolder-Nicknamer/assets/120773486/c5dbfe6d-fa1b-4b13-bbf1-39df3fb51d49">
+
+**As you can see, the route keeps the same ↓**
 
 <img width="880" alt="Screenshot 2024-01-26 170548" src="https://github.com/HNRobert/WinFolder-Nicknamer/assets/120773486/3d7820b3-381f-4c7b-912f-d8bbb9f4e69a">
 
