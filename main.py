@@ -1,5 +1,6 @@
 
 
+from base64 import b64decode
 import os
 import sys
 import tkinter.font as font
@@ -12,6 +13,7 @@ from tkinter.messagebox import showinfo, showwarning
 from win32api import SetFileAttributes
 from win32con import FILE_ATTRIBUTE_NORMAL, FILE_ATTRIBUTE_HIDDEN
 from LT_Dic import language_label, language_list, root_dic
+from icon import icon
 
 WIN_SHELL_KEY = winreg.OpenKey(winreg.HKEY_CURRENT_USER,
                                r'Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders')
@@ -19,6 +21,7 @@ DESKTOP_PATH = winreg.QueryValueEx(WIN_SHELL_KEY, "Desktop")[0]
 NK_PATH = 'C:/ProgramData/WinFolder-Nicknamer'
 NK_BACKUP_DATA = os.path.join(NK_PATH, r'backup_data.ini')
 NK_CONFIG = os.path.join(NK_PATH, r'config.ini')
+NK_ICON_PATH = os.path.join(NK_PATH, r'Nickname.ico')
 NK_OPTION = 'nickname'
 NK_ORI_OPTION = 'original'
 SHELL_CLASS_INFO = '.ShellClassInfo'
@@ -33,6 +36,12 @@ GENERIC = 'Generic'
 def get_language_num(language: str):
     lang_dic = {'English': 0, 'Chinese': 1}
     return lang_dic[language]
+
+
+def load_icon():
+    nk_icon = open(NK_ICON_PATH, 'wb')
+    nk_icon.write(b64decode(icon))
+    nk_icon.close()
 
 
 def changeNickname(path, nickname):
@@ -141,7 +150,7 @@ def mk_ui():
     root.title('Windows Folder Nicknamer')
     root.protocol('WM_DELETE_WINDOW', exit_program)
     root.resizable(True, False)
-    root.iconbitmap('Nicknamer.ico')
+    root.iconbitmap(NK_ICON_PATH)
     tkfont = font.nametofont("TkDefaultFont")
     tkfont.config(family='Microsoft YaHei UI')
     root.option_add("*Font", tkfont)
@@ -216,6 +225,8 @@ def main():
         backup_config.write(open(NK_BACKUP_DATA, 'w'))
     if not os.path.exists(NK_CONFIG):
         config.write(open(NK_CONFIG, 'w'))
+    if not os.path.exists(NK_ICON_PATH):
+        load_icon()
     backup_config.read(NK_BACKUP_DATA)
     init_config()
     mk_ui()
